@@ -45,7 +45,7 @@
      .popup {
     width: 500px;
     min-height: 500px;
-}     display: flex;
+     display: flex;
           flex-direction: column;
           align-items: center;
           text-align: center;
@@ -153,9 +153,6 @@
     <!-- Temperature Selection Modal -->
 <div id="temperatureModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
     <div class="bg-white p-6 rounded-lg flex flex-col items-center">
-        <!-- 온도 선택 안내 이미지 (음료 이미지) -->
-        <img id="drinkImage" src="images/default-drink.png" alt="선택한 음료 이미지" class="popup-image">
-
         <!-- 온도 선택 버튼 -->
         <div class="flex gap-4">
             <button id="hotButton" class="py-3 px-6 rounded-lg bg-red-500 text-white font-bold hover:bg-red-600 transition-colors">
@@ -494,7 +491,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 30초 후 이동
     timeout = setTimeout(() => {
-      window.location.href = "index.html"; // 이동할 페이지 (언어 선택 화면)
+      window.location.href = "https://placeudo.github.io/hall/index.html"; // 이동할 페이지 (언어 선택 화면)
     }, 30000); // 30초
   }
 
@@ -509,7 +506,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateWarningText() {
     if (remainingTime > 0) {
-      document.getElementById("warningText").innerText = `${remainingTime} 秒后返回语言选择画面。`;
+      document.getElementById("warningText").innerText = `${remainingTime} 초후 언어 선택화면으로 돌아갑니다.`;
       remainingTime--;
       setTimeout(updateWarningText, 1000); // 1초마다 업데이트
     }

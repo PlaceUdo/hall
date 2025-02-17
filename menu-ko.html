@@ -491,7 +491,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 30초 후 이동
     timeout = setTimeout(() => {
-      window.location.href = "https://placeudo.github.io/hall/index.html"; // 이동할 페이지 (언어 선택 화면)
+      window.location.href = "index.html"; // 이동할 페이지 (언어 선택 화면)
     }, 30000); // 30초
   }
 
@@ -506,7 +506,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateWarningText() {
     if (remainingTime > 0) {
-      document.getElementById("warningText").innerText = `${remainingTime} 초후 언어 선택화면으로 돌아갑니다.`;
+      document.getElementById("warningText").innerText = `${remainingTime} 초후 언어 선택 화면으로 돌아갑니다.`;
       remainingTime--;
       setTimeout(updateWarningText, 1000); // 1초마다 업데이트
     }

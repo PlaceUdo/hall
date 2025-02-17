@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>음식 주문 시스템</title>
+    <title>饮料点餐系统</title>
     <script src="https://cdn.tailwindcss.com?version=3.4.16"></script>
     <style>
               .modal-overlay {
@@ -45,7 +45,7 @@
      .popup {
     width: 500px;
     min-height: 500px;
-     display: flex;
+}     display: flex;
           flex-direction: column;
           align-items: center;
           text-align: center;
@@ -170,7 +170,7 @@
       <div class="flex gap-8">
         <!-- Menu Section -->
         <div class="flex-1">
-          <h2 class="mb-4 text-2xl font-bold">메뉴</h2>
+          <h2 class="mb-4 text-2xl font-bold">菜谱</h2>
           <div id="menu-container" class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             <!-- Menu items will be inserted here -->
           </div>
@@ -184,7 +184,7 @@
               <circle cx="10" cy="20" r="1"></circle>
               <circle cx="18" cy="20" r="1"></circle>
             </svg>
-            <h2 class="text-2xl font-bold">장바구니</h2>
+            <h2 class="text-2xl font-bold">菜篮子</h2>
           </div>
           <div id="cart-items" class="mb-4 space-y-4">
             <!-- Cart items will be inserted here -->
@@ -192,10 +192,10 @@
           <div class="border-t pt-4">
             <div class="border-t pt-4">
               <div class="flex items-center justify-between font-bold">
-                <span>총 금액:</span>
+                <span>总额:</span>
                 <span id="total-price">₩0</span>
               </div>
-              <button id="clear-cart" class="mt-4 w-full rounded-lg bg-red-500 py-2 font-bold text-white transition hover:bg-red-600">장바구니 초기화</button>
+              <button id="clear-cart" class="mt-4 w-full rounded-lg bg-red-500 py-2 font-bold text-white transition hover:bg-red-600">重置订单列表。</button>
             </div>
           </div>
         </div>
@@ -204,29 +204,29 @@
     <script>
       console.log("페이지 로드됨");
               const menuItems = [
-                  { name: "아메리카노", price: 6000, hasTemperature: true, image: "images/Americano.jpg" },
-                  { name: "카페라떼", price: 6500, hasTemperature: true, image: "images/CaffeLatte.jpg" },
-                  { name: "바닐라라떼", price: 7000, hasTemperature: true, image: "images/VanillaLatte.jpg" },
-                  { name: "카페모카", price: 7000, hasTemperature: true, image: "images/CaffeMocha.jpg" },
-                  { name: "우도땅콩크림라떼", price: 8500, hasTemperature: true, image: "images/UdoPeanutCreamLatte.jpg" },
-                  { name: "흑임자크림라떼", price: 8500, hasTemperature: true, image: "images/BlackSesameCreamLatte.jpg" },
-                  { name: "우도땅콩아이스크림라떼", price: 9000, hasTemperature: true, onlyIce: true, image: "images/UdoPeanutIceCreamLatte.jpg" }, // ICE만 가능
-                  { name: "우도땅콩아포카토", price: 9000, hasTemperature: true, onlyIce: true, image: "images/UdoPeanutAffogato.jpg" }, // ICE만 가능
-                  { name: "에스프레소", price: 5000, hasTemperature: true, onlyHot: true, image: "images/Espresso.jpg" }, // HOT만 가능
-                  { name: "캐모마일", price: 6000, hasTemperature: true, image: "images/ChamomileTea.jpg" },
-                  { name: "청귤차", price: 6000, hasTemperature: true, image: "images/GreenTangerineTea.jpg" },
-                  { name: "한라봉차", price: 6000, hasTemperature: true, image: "images/HallabongTea.jpg" },
-                  { name: "초코라떼", price: 7000, hasTemperature: true, image: "images/ChocolateLatte.jpg" },
-                  { name: "녹차라떼", price: 7000, hasTemperature: true, image: "images/GreenTeaLatte.jpg" },
-                  { name: "청귤에이드", price: 7000, hasTemperature: true, onlyIce: true, image: "images/GreenTangerineAde.jpg" }, // ICE만 가능
-                  { name: "한라봉에이드", price: 7000, hasTemperature: true, onlyIce: true, image: "images/HallabongAde.jpg" }, // ICE만 가능
-                  { name: "블루레몬에이드", price: 7000, hasTemperature: true, onlyIce: true, image: "images/BlueLemonAde.jpg" }, // ICE만 가능
-                  { name: "우도땅콩아이스크림", price: 5000, hasTemperature: true, onlyIce: true, image: "images/UdoPeanutIceCream.jpg" }, // ICE만 가능
-                  { name: "우도땅콩아이스크림과<br>크로플", price: 10000, hasTemperature: true, onlyIce: true, image: "images/UdoPeanutIceCreamCroffle.jpg" }, // ICE만 가능
-                  { name: "1664 블랑", price: 8000, hasTemperature: true, onlyIce: true, image: "images/1664Blanc.jpg" }, // ICE만 가능
-                  { name: "빅 웨이브", price: 9000, hasTemperature: true, onlyIce: true, image: "images/BigWave.jpg" }, // ICE만 가능
-                  { name: "코로나", price: 7000, hasTemperature: true, onlyIce: true, image: "images/Corona.jpg" }, // ICE만 가능
-                  { name: "켈리", price: 5000, hasTemperature: true, onlyIce: true, image: "images/Kelly.jpg" }, // ICE만 가능
+                  { name: "美式咖啡<br>아메리카노", price: 6000, hasTemperature: true, image: "images/Americano.jpg" },
+                  { name: "拿铁咖啡<br>카페라떼", price: 6500, hasTemperature: true, image: "images/CaffeLatte.jpg" },
+                  { name: "香草拿铁<br>바닐라라떼", price: 7000, hasTemperature: true, image: "images/VanillaLatte.jpg" },
+                  { name: "摩卡咖啡<br>카페모카", price: 7000, hasTemperature: true, image: "images/CaffeMocha.jpg" },
+                  { name: "牛岛花生奶油拿铁<br>우도땅콩크림라떼", price: 8500, hasTemperature: true, image: "images/UdoPeanutCreamLatte.jpg" },
+                  { name: "黑芝麻奶油拿铁<br>흑임자크림라떼", price: 8500, hasTemperature: true, image: "images/BlackSesameCreamLatte.jpg" },
+                  { name: "牛岛花生冰淇淋拿铁<br>우도땅콩아이스크림라떼", price: 9000, hasTemperature: true, onlyIce: true, image: "images/UdoPeanutIceCreamLatte.jpg" }, // ICE만 가능
+                  { name: "牛岛花生阿芙佳朵<br>우도땅콩아포카토", price: 9000, hasTemperature: true, onlyIce: true, image: "images/UdoPeanutAffogato.jpg" }, // ICE만 가능
+                  { name: "浓缩咖啡<br>에스프레소", price: 5000, hasTemperature: true, onlyHot: true, image: "images/Espresso.jpg" }, // HOT만 가능
+                  { name: "洋甘菊茶<br>캐모마일", price: 6000, hasTemperature: true, image: "images/ChamomileTea.jpg" },
+                  { name: "青橘茶<br>청귤차", price: 6000, hasTemperature: true, image: "images/GreenTangerineTea.jpg" },
+                  { name: "柑橘茶<br>한라봉차", price: 6000, hasTemperature: true, image: "images/HallabongTea.jpg" },
+                  { name: "巧克力拿铁<br>초코라떼", price: 7000, hasTemperature: true, image: "images/ChocolateLatte.jpg" },
+                  { name: "抹茶拿铁<br>녹차라떼", price: 7000, hasTemperature: true, image: "images/GreenTeaLatte.jpg" },
+                  { name: "青橘气泡饮<br>청귤에이드", price: 7000, hasTemperature: true, onlyIce: true, image: "images/GreenTangerineAde.jpg" }, // ICE만 가능
+                  { name: "柑橘气泡饮<br>한라봉에이드", price: 7000, hasTemperature: true, onlyIce: true, image: "images/HallabongAde.jpg" }, // ICE만 가능
+                  { name: "蓝柠气泡饮<br>블루레몬에이드", price: 7000, hasTemperature: true, onlyIce: true, image: "images/BlueLemonAde.jpg" }, // ICE만 가능
+                  { name: "牛岛花生冰淇淋<br>우도땅콩아이스크림", price: 5000, hasTemperature: true, onlyIce: true, image: "images/UdoPeanutIceCream.jpg" }, // ICE만 가능
+                  { name: "牛岛花生冰淇淋&可颂华夫<br>우도땅콩아이스크림과<br>크로플", price: 10000, hasTemperature: true, onlyIce: true, image: "images/UdoPeanutIceCreamCroffle.jpg" }, // ICE만 가능
+                  { name: "1664 白啤<br>1664 블랑", price: 8000, hasTemperature: true, onlyIce: true, image: "images/1664Blanc.jpg" }, // ICE만 가능
+                  { name: "大浪啤酒<br>빅 웨이브", price: 9000, hasTemperature: true, onlyIce: true, image: "images/BigWave.jpg" }, // ICE만 가능
+                  { name: "科罗娜啤酒<br>코로나", price: 7000, hasTemperature: true, onlyIce: true, image: "images/Corona.jpg" }, // ICE만 가능
+                  { name: "凯利啤酒<br>켈리", price: 5000, hasTemperature: true, onlyIce: true, image: "images/Kelly.jpg" }, // ICE만 가능
               ];
 
               const cart = [];
@@ -256,29 +256,29 @@ function showTemperatureModal(index) {
 
 // 🔹 메뉴명과 이미지 매핑 객체
 const drinkImages = {
-    "아메리카노": "images/Americano.jpg",
-    "카페라떼": "images/CaffeLatte.jpg",
-    "바닐라라떼": "images/VanillaLatte.jpg",
-    "카페모카": "images/CaffeMocha.jpg",
-    "우도땅콩크림라떼": "images/UdoPeanutCreamLatte.jpg",
-    "흑임자크림라떼": "images/BlackSesameCreamLatte.jpg",
-    "우도땅콩아이스크림라떼": "images/UdoPeanutIceCreamLatte.jpg",
-    "우도땅콩아포카토": "images/UdoPeanutAffogato.jpg",
-    "에스프레소": "images/Espresso.jpg",
-    "캐모마일": "images/ChamomileTea.jpg",
-    "청귤차": "images/GreenTangerineTea.jpg",
-    "한라봉차": "images/HallabongTea.jpg",
-    "초코라떼": "images/ChocolateLatte.jpg",
-    "녹차라떼": "images/GreenTeaLatte.jpg",
-    "청귤에이드": "images/GreenTangerineAde.jpg",
-    "한라봉에이드": "images/HallabongAde.jpg",
-    "블루레몬에이드": "images/BlueLemonAde.jpg",
-    "우도땅콩아이스크림": "images/UdoPeanutIceCream.jpg",
-    "우도땅콩아이스크림과크로플": "images/UdoPeanutIceCreamCroffle.jpg",
-    "1664 블랑": "images/1664Blanc.jpg",
-    "빅 웨이브": "images/BigWave.jpg",
-    "코로나": "images/Corona.jpg",
-    "켈리": "images/Kelly.jpg",
+    "美式咖啡<br>아메리카노": "images/Americano.jpg",
+    "拿铁咖啡<br>카페라떼": "images/CaffeLatte.jpg",
+    "香草拿铁<br>바닐라라떼": "images/VanillaLatte.jpg",
+    "摩卡咖啡<br>카페모카": "images/CaffeMocha.jpg",
+    "牛岛花生奶油拿铁<br>우도땅콩크림라떼": "images/UdoPeanutCreamLatte.jpg",
+    "黑芝麻奶油拿铁<br>흑임자크림라떼": "images/BlackSesameCreamLatte.jpg",
+    "牛岛花生冰淇淋拿铁<br>우도땅콩아이스크림라떼": "images/UdoPeanutIceCreamLatte.jpg",
+    "牛岛花生阿芙佳朵<br>우도땅콩아포카토": "images/UdoPeanutAffogato.jpg",
+    "浓缩咖啡<br>에스프레소": "images/Espresso.jpg",
+    "洋甘菊茶<br>캐모마일": "images/ChamomileTea.jpg",
+    "青橘茶<br>청귤차": "images/GreenTangerineTea.jpg",
+    "柑橘茶<br>한라봉차": "images/GreenTangerineTea.jpg",
+    "巧克力拿铁<br>초코라떼": "images/ChocolateLatte.jpg",
+    "抹茶拿铁<br>녹차라떼": "images/GreenTeaLatte.jpg",
+    "青橘气泡饮<br>청귤에이드": "images/GreenTangerineAde.jpg",
+    "柑橘气泡饮<br>한라봉에이드": "images/HallabongAde.jpg",
+    "蓝柠气泡饮<br>블루레몬에이드": "images/BlueLemonAde.jpg",
+    "牛岛花生冰淇淋<br>우도땅콩아이스크림": "images/UdoPeanutIceCream.jpg",
+    "牛岛花生冰淇淋&可颂华夫<br>우도땅콩아이스크림과<br>크로플": "images/UdoPeanutIceCreamCroffle.jpg",
+    "1664 白啤<br>1664 블랑": "images/1664Blanc.jpg",
+    "大浪啤酒<br>빅 웨이브": "images/BigWave.jpg",
+    "科罗娜啤酒<br>코로나": "images/Corona.jpg",
+    "凯利啤酒<br>켈리": "images/Kelly.jpg",
 };
 
 // 🔹 선택한 메뉴에 따라 이미지 변경
@@ -534,4 +534,3 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
   </body>
 </html>
-

@@ -45,7 +45,7 @@
      .popup {
     width: 500px;
     min-height: 500px;
-}     display: flex;
+     display: flex;
           flex-direction: column;
           align-items: center;
           text-align: center;
@@ -341,7 +341,7 @@ function hideTemperatureModal() {
       function updateCart() {
           cartItemsContainer.innerHTML = '';
           if (cart.length === 0) {
-              cartItemsContainer.innerHTML = '<p class="text-gray-500 text-center py-4">Shopping list is empty.</p>';
+              cartItemsContainer.innerHTML = '<p class="text-gray-500 text-center py-4">장바구니가 비어있습니다.</p>';
               totalPriceElement.textContent = '₩0';
               localStorage.removeItem('cart'); // 장바구니가 비었으면 로컬 스토리지에서도 삭제
               return;
@@ -472,6 +472,7 @@ document.addEventListener("DOMContentLoaded", function () {
           updateCart();
           localStorage.removeItem('cart'); // 로컬 스토리지에서도 삭제
       }
+
   let timeout;
   let warningTimeout;
   let warningDisplayed = false;
@@ -505,7 +506,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateWarningText() {
     if (remainingTime > 0) {
-      document.getElementById("warningText").innerText = `Return to the language selection screen in ${remainingTime} seconds.`;
+    document.getElementById("warningText").innerText = `Return to the language selection screen in ${remainingTime} seconds.`;
       remainingTime--;
       setTimeout(updateWarningText, 1000); // 1초마다 업데이트
     }

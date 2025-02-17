@@ -473,57 +473,67 @@ document.addEventListener("DOMContentLoaded", function () {
           localStorage.removeItem('cart'); // 로컬 스토리지에서도 삭제
       }
 
-  let timeout;
-  let warningTimeout;
-  let warningDisplayed = false;
-  let remainingTime = 5; // 5초 카운트다운
+let timeout;
+let warningTimeout;
+let warningDisplayed = false;
+let remainingTime = 5;
+let countdownInterval; // 추가된 변수
 
-  function resetTimer() {
-    clearTimeout(timeout);
-    clearTimeout(warningTimeout);
-    warningDisplayed = false;
-    hideWarningPopup(); // 팝업 숨기기
+function resetTimer() {
+  clearTimeout(timeout);
+  clearTimeout(warningTimeout);
+  clearInterval(countdownInterval); // 기존 카운트다운 제거
+  warningDisplayed = false;
+  hideWarningPopup();
 
-    // 25초 후 경고창 표시 + 카운트다운 시작
-    warningTimeout = setTimeout(() => {
-      showWarningPopup();
-    }, 25000); // 25초
+  warningTimeout = setTimeout(() => {
+    showWarningPopup();
+  }, 25000);
 
-    // 30초 후 이동
-    timeout = setTimeout(() => {
-      window.location.href = "index.html"; // 이동할 페이지 (언어 선택 화면)
-    }, 30000); // 30초
-  }
+  timeout = setTimeout(() => {
+    window.location.href = "index.html";
+  }, 30000);
+}
 
-  function showWarningPopup() {
-    if (!warningDisplayed) {
-      warningDisplayed = true;
-      remainingTime = 5; // 5초부터 시작
-      document.getElementById("warningPopup").style.display = "block";
+function showWarningPopup() {
+  if (!warningDisplayed) {
+    warningDisplayed = true;
+    remainingTime = 5;
+    document.getElementById("warningPopup").style.display = "block";
+    updateWarningText();
+
+    // 기존 카운트다운이 있다면 제거
+    clearInterval(countdownInterval);
+
+    // 새로운 카운트다운 시작
+    countdownInterval = setInterval(() => {
       updateWarningText();
-    }
+    }, 1000);
   }
+}
 
-  function updateWarningText() {
-    if (remainingTime > 0) {
-      document.getElementById("warningText").innerText = `${remainingTime} 초후 언어 선택 화면으로 돌아갑니다.`;
-      remainingTime--;
-      setTimeout(updateWarningText, 1000); // 1초마다 업데이트
-    }
+function updateWarningText() {
+  if (remainingTime > 0) {
+    document.getElementById("warningText").innerText = `${remainingTime} 초 후 언어 선택 화면으로 돌아갑니다.`;
+    remainingTime--;
+  } else {
+    clearInterval(countdownInterval); // 카운트다운 종료
   }
+}
 
-  function hideWarningPopup() {
-    document.getElementById("warningPopup").style.display = "none";
-  }
+function hideWarningPopup() {
+  document.getElementById("warningPopup").style.display = "none";
+  clearInterval(countdownInterval); // 팝업 숨길 때 카운트다운도 정리
+}
 
-  // 이벤트 리스너 추가 (터치, 클릭, 키 입력 시 타이머 리셋)
-  window.addEventListener("mousemove", resetTimer);
-  window.addEventListener("mousedown", resetTimer);
-  window.addEventListener("keydown", resetTimer);
-  window.addEventListener("touchstart", resetTimer);
+// 이벤트 리스너 추가
+window.addEventListener("mousemove", resetTimer);
+window.addEventListener("mousedown", resetTimer);
+window.addEventListener("keydown", resetTimer);
+window.addEventListener("touchstart", resetTimer);
 
-  // 페이지 로드 시 타이머 시작
-  resetTimer();
+// 페이지 로드 시 타이머 시작
+resetTimer();
 
     </script>
 <div id="warningPopup" 

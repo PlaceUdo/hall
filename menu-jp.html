@@ -489,12 +489,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // 25초 후 경고창 표시 + 카운트다운 시작
     warningTimeout = setTimeout(() => {
       showWarningPopup();
-    }, 250000); // 25초
+    }, 25000); // 25초
 
     // 30초 후 이동
     timeout = setTimeout(() => {
       window.location.href = "index.html"; // 이동할 페이지 (언어 선택 화면)
-    }, 300000); // 30초
+    }, 30000); // 30초
   }
 
   function showWarningPopup() {
@@ -532,7 +532,7 @@ document.addEventListener("DOMContentLoaded", function () {
      style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
             background: rgba(0, 0, 0, 0.8); color: white; padding: 20px; border-radius: 10px;
             font-size: 20px; text-align: center;">
-  <p id="warningText">Return to the language selection screen in 5 seconds.</p>
+  <p id="warningText">5초 후 언어 선택 화면으로 돌아갑니다.</p>
 </div>
   </body>
 </html>

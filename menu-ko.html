@@ -506,7 +506,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateWarningText() {
     if (remainingTime > 0) {
-    document.getElementById("warningText").innerText = `${remainingTime} 秒后返回语言选择画面。`;
+    document.getElementById("warningText").innerText = `${remainingTime}초 후 언어 선택 화면으로 돌아갑니다.`;
       remainingTime--;
       setTimeout(updateWarningText, 1000); // 1초마다 업데이트
     }

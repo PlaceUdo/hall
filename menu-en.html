@@ -153,9 +153,6 @@
     <!-- Temperature Selection Modal -->
 <div id="temperatureModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
     <div class="bg-white p-6 rounded-lg flex flex-col items-center">
-        <!-- 온도 선택 안내 이미지 (음료 이미지) -->
-        <img id="drinkImage" src="images/default-drink.png" alt="선택한 음료 이미지" class="popup-image">
-
         <!-- 온도 선택 버튼 -->
         <div class="flex gap-4">
             <button id="hotButton" class="py-3 px-6 rounded-lg bg-red-500 text-white font-bold hover:bg-red-600 transition-colors">
@@ -508,7 +505,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateWarningText() {
     if (remainingTime > 0) {
-      document.getElementById("warningText").innerText = `Return to the language selection screen in ${remainingTime} seconds.`;
+      document.getElementById("warningText").innerText = `${remainingTime} Return to the language selection screen in ${remainingTime} seconds.`;
       remainingTime--;
       setTimeout(updateWarningText, 1000); // 1초마다 업데이트
     }
